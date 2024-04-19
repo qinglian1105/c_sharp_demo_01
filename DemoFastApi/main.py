@@ -36,8 +36,7 @@ def read_root():
 
 
 @app.get("/api/all_years")
-def all_years():
-   print("-"*58)
+def all_years():   
    ds = get_all_years()   
    return ds
 
