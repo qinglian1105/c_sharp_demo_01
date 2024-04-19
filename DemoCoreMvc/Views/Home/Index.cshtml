@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="row">
+    <div class="col-md-12 page-header">        
+        <h2 class="page-title">@ViewData["Title"]</h2><br>                        
+        <div class="card">            
+            <div class="card-body" style="color:blue;">
+                <p><h5>簡介</h5></p>
+                <p>此為半個月以來自學C#之練習：簡易RWD網頁、前後端交互、圖表呈現。</p>
+                <p>前端使用ASP.Net Core MVC，樣式套用boostrap-simple-admin作簡化。
+                <p>後端為FastAPI，資料庫使用PostgreSQL。
+                <p>示範資料來自 Kaggle 的 lending club數據集，作簡易的探索性分析及建模預測。
+                <p>主要為展示程式技術，故僅列出幾個統計圖表，如 [選單二] 的「儀表板」，有下拉式選單切換分析年度。
+                <p>另外，違約預測分析只使用幾個模型變數作訓練，如 [選單三] 的「機器學習」，後端佈署模型預測API供前端調用，在Form輸入各項數據送出後在下方返迴預測結果。</p>                                             
+                <p>最後， [選單四] 及 [選單五] 未定。   
+            </div>            
+        </div>    
+    </div>
+</div>    
+
+<script src="~/assets/vendor/jquery/jquery.min.js"></script>
+<script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/vendor/chartsjs/Chart.min.js"></script>     
+<script src="~/assets/js/dashboard-charts.js"></script>
+<script src="~/assets/js/script.js"></script>
+<script src="~/assets/js/my_functions.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

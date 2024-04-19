@@ -1,0 +1,221 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    var loan_amt = @ViewBag.loan_amt.total_loan.ToString("N0");
+    var loan_count = @ViewBag.loan_count.total_count.ToString("N0");
+    var default_amt = @ViewBag.default_amt.default_amt.ToString("N0");
+    var default_count = @ViewBag.default_count.default_count.ToString("N0");
+    var month_loan = @ViewBag.month_loan;
+    var month_count = @ViewBag.month_count;
+    var purpose = @ViewBag.purpose;
+    var occupation = @ViewBag.occupation;
+}
+
+<div class="row">
+    <div class="col-md-6 page-header">
+        
+        <h2 class="page-title">@ViewData["Title"]</h2><br>        
+        <div>
+            <label>請選擇年度:</label><br><br>
+            <select class="form-select" aria-label="Default select example" onchange="update_all(this.value);">                        
+                @{
+                    int i = 1;
+                    foreach ( var item in @ViewBag.list_years)
+                    {
+                    <option value=@i>@item</option>
+                    i++;
+                    }
+                }                
+            </select>  
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="icon-big text-center">
+                            <i class="olive fas fa-money-bill-alt"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="detail">
+                            <p class="detail-subtitle">貸放金額</p>
+                            <span class="number" id="m01">@loan_amt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr />
+                    <div class="stats">
+                        <i class="fas fa-calendar"></i>For this Year
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="icon-big text-center">
+                            <i class="teal fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="detail">
+                            <p class="detail-subtitle">貸放人數</p>
+                            <span class="number" id="m02">@loan_count</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr />
+                    <div class="stats">
+                        <i class="fas fa-calendar"></i>For this Year                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="icon-big text-center">
+                            <i class="violet fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="detail">
+                            <p class="detail-subtitle">違約金額</p>
+                            <span class="number" id="m03">@default_amt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr />
+                    <div class="stats">
+                        <i class="fas fa-stopwatch"></i>For this Year
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+        <div class="card">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="icon-big text-center">
+                            <i class="orange fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="detail">
+                            <p class="detail-subtitle">違約人數</p>
+                            <span class="number" id="m04">@default_count</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <hr />
+                    <div class="stats">
+                        <i class="fas fa-envelope-open-text"></i>For this Year
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="head">
+                            <h5 class="mb-0">每月貸放金額</h5>
+                            <p class="text-muted">Current year data</p>
+                        </div>
+                        <div class="canvas-wrapper" id="left_chart">
+                            <canvas class="chart" id="m_loan_amt"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="head">
+                            <h5 class="mb-0">每月貸放人數</h5>
+                            <p class="text-muted">Current year data</p>
+                        </div>
+                        <div class="canvas-wrapper" id="right_chart">
+                            <canvas class="chart" id="m_loan_count"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="content">
+                <div class="head">
+                    <h5 class="mb-0">貸款目的(Top 10)</h5>
+                    <p class="text-muted">Current year data</p>
+                </div>
+                <div class="canvas-wrapper" id="left_tb">
+                    @Html.Raw(purpose.tb)                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="content">
+                <div class="head">
+                    <h5 class="mb-0">貸款人工作職稱(Top 10)</h5>
+                    <p class="text-muted">Current year data</p>
+                </div>
+                <div class="canvas-wrapper" id="right_tb">
+                    @Html.Raw(occupation.tb)
+
+
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div class="row">
+    @* @month_loan <br>
+    @month_count *@
+</div>
+
+<script src="~/assets/vendor/jquery/jquery.min.js"></script>
+<script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/vendor/chartsjs/Chart.min.js"></script>     
+<script src="~/assets/js/dashboard-charts.js"></script>
+<script src="~/assets/js/script.js"></script>
+<script src="~/assets/js/my_functions.js"></script>
+@* <script src="https://unpkg.com/axios/dist/axios.min.js"></script> *@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">           
+    var y1 = @Html.Raw(month_loan.mm);
+    var x1 = @Html.Raw(month_loan.amt);    
+    left_chart(y1, x1);
+    var y2 = @Html.Raw(month_count.mm);
+    var x2 = @Html.Raw(month_count.count);
+    right_chart(y2, x2);            
+</script>
+
+// ---------------------------------------------------
