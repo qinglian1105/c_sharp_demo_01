@@ -60,6 +60,10 @@ public class HomeController : Controller
         return View("/Views/MachineLearning/MachineLearning.cshtml");
     }
 
+    public IActionResult Yolov5()
+    {
+        return View("/Views/Yolov5/Yolov5.cshtml");
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

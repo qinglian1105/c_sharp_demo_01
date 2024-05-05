@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Object Detection";
+}
+
+<div class="row">
+    <div class="col-md-6 page-header">        
+        <h2 class="page-title">@ViewData["Title"]</h2><br>                        
+    <div>                       
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">Form - Food Detection</div>
+            <div class="card-body">                                
+                <div class="input-group mb-3">    
+                    <form id="uploadForm" enctype="multipart/form-data">                
+                        <h5 class="card-title">Step_01: 請點選「選擇檔案」(JPG)</h5><br>                                                                                                                                                         
+                        <input type="file" name="imageFile" id="imageFile"><br><br>
+                        <h5 class="card-title">Step_02: 請點選「執行」上傳圖檔及檢測</h5><br>                                                                                                                                               
+                        <input type="submit" value="執行">                        
+                    </form>
+                </div><br>
+                <div id="imageContainer"></div>                                                                                                                      
+            </div>            
+        </div>            
+    </div>   
+
+</div>
+
+<script src="~/assets/vendor/jquery/jquery.min.js"></script>
+<script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/vendor/chartsjs/Chart.min.js"></script>     
+<script src="~/assets/js/dashboard-charts.js"></script>
+<script src="~/assets/js/script.js"></script>
+<script src="~/assets/js/my_script.js"></script>
+

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "feoYaQ51giTNIC8g1/VfMzxtcFROtwRA8PyZYUXMI9zWKq7DQlfeMQhOIfw38dzW0tQgvxC8jSOugHvbPtx2eg==",
+  "dgSpecHash": "6y0z4KU+pFym73TDTumJAFFuO8onmrCdEziVsWO9+Clpd9RUsqaxTpEzNIzDjMcXqn5poHS2fnE6+oZNBhum3Q==",
   "success": true,
-  "projectFilePath": "/Users/cing-lian/z_coding/my_github/demo_dotnet_01/DemoCoreMvc/DemoCoreMvc.csproj",
+  "projectFilePath": "/Users/cing-lian/z_coding/c_sharp_demo_01/DemoCoreMvc/DemoCoreMvc.csproj",
   "expectedPackageFiles": [
     "/Users/cing-lian/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
   ],
